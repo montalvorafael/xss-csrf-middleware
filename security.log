@@ -1,0 +1,21 @@
+{"level":"warn","message":"CSRF token mismatch from ::ffff:127.0.0.1","timestamp":"2025-11-20T17:48:54.024Z"}
+{"level":"warn","message":"CSRF token mismatch from ::ffff:127.0.0.1","timestamp":"2025-11-20T17:48:54.039Z"}
+{"level":"warn","message":"CSRF token mismatch from ::ffff:127.0.0.1","timestamp":"2025-11-20T17:48:54.063Z"}
+{"level":"warn","message":"CSRF token mismatch from ::ffff:127.0.0.1","timestamp":"2025-11-20T17:48:54.078Z"}
+{"level":"warn","message":"CSRF token mismatch from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:17:24.940Z"}
+{"level":"warn","message":"CSRF token mismatch from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:20:00.676Z"}
+{"level":"warn","message":"CSRF token mismatch from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:20:00.690Z"}
+{"level":"warn","message":"CSRF token mismatch from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:20:00.714Z"}
+{"level":"warn","message":"CSRF token mismatch from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:20:00.726Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:24:17.579Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:24:17.593Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:24:17.615Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:24:17.628Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:32:06.754Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:32:06.769Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:32:06.792Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:32:06.805Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:33:26.490Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:33:26.504Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:33:26.527Z"}
+{"level":"warn","message":"CSRF fail from ::ffff:127.0.0.1","timestamp":"2025-11-20T18:33:26.539Z"}

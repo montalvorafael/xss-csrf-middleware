@@ -1,0 +1,28 @@
+<<<<<<< HEAD
+services:
+  csrf-middleware:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - SESSION_SECRET=your-production-secret
+      - CSRF_EXPIRY_MS=1800000
+      - ALLOWED_ORIGINS=http://localhost:3000
+      - RATE_LIMIT_MAX=10
+    volumes:
+=======
+services:
+  csrf-middleware:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - SESSION_SECRET=your-production-secret
+      - CSRF_EXPIRY_MS=1800000
+      - ALLOWED_ORIGINS=http://localhost:3000
+      - RATE_LIMIT_MAX=10
+    volumes:
+>>>>>>> 510a70b3c15fde540abd0533d41ac6087d3df44b
+      - ./.env:/app/.env:ro

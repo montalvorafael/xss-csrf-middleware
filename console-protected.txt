@@ -1,0 +1,7 @@
+LOG: Nonce-allowed script runs safely
+ERROR: Refused to connect to 'http://localhost:3000/protected/transfer' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'connect-src' was not explicitly set, so 'default-src' is used as a fallback.
+
+ERROR: Refused to connect to 'http://localhost:3000/protected/transfer' because it violates the document's Content Security Policy.
+ERROR: AJAX failed: JSHandle@error
+ERROR: Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'self' 'nonce-b98e/XJR9/lIsNO634sMAQ==' https://cdn.jsdelivr.net". Either the 'unsafe-inline' keyword, a hash ('sha256-OYZdzlIkwWLZPcKj+A/+Peg4QTksiL/9Z8v6F2h/huM='), or a nonce ('nonce-...') is required to enable inline execution.
+

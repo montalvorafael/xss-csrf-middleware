@@ -1,0 +1,42 @@
+{
+  "timestamp": "2025-10-25T19:04:33.094Z",
+  "mode": "full",
+  "perf": {
+    "vuln": {
+      "label": "vulnerable(no-middleware)",
+      "latencyAvgMs": 11.76,
+      "requestsPerSec": 814.6
+    },
+    "prot": {
+      "label": "protected(with-middleware)",
+      "latencyAvgMs": 48.14,
+      "requestsPerSec": 205.5
+    },
+    "summary": {
+      "overheadMs": 36.38,
+      "overheadPct": "309.35"
+    }
+  },
+  "baseline": {
+    "csrf": {
+      "successRate": "100.00",
+      "falsePositives": 0,
+      "coverage": 2
+    },
+    "xss": {
+      "blockRate": "100.00",
+      "coverage": 3
+    }
+  },
+  "protected": {
+    "csrf": {
+      "successRate": "50.00",
+      "falsePositives": 2,
+      "coverage": 2
+    },
+    "xss": {
+      "blockRate": "100.00",
+      "coverage": 3
+    }
+  }
+}
