@@ -1,14 +1,11 @@
-# 🛡️ XSS–CSRF Middleware
+# XSS–CSRF Middleware
 
-[![CI](https://github.com/wyatt2247/xss-csrf-middleware/actions/workflows/ci.yml/badge.svg)](https://github.com/wyatt2247/xss-csrf-middleware/actions/workflows/ci.yml)
-[![Coverage](https://coveralls.io/repos/github/wyatt2247/xss-csrf-middleware/badge.svg)](https://coveralls.io/github/wyatt2247/xss-csrf-middleware)
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 A simple, reusable **Express middleware** for defending against **Cross-Site Scripting (XSS)** and **Cross-Site Request Forgery (CSRF)** attacks.
 
 ---
 
-## ✨ Features
+##  Features
 
 ### XSS Protection
 - Enforces **Content-Security-Policy (CSP)** with unique per-request nonces
@@ -28,7 +25,7 @@ A simple, reusable **Express middleware** for defending against **Cross-Site Scr
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 npm install
@@ -63,7 +60,7 @@ app.listen(3000);
 
 ---
 
-## 🎯 Demo Routes
+## Demo Routes
 
 | Route | Protection | Behavior |
 |-------|------------|----------|
@@ -84,7 +81,7 @@ curl -X POST http://localhost:3000/protected/transfer -d "amount=999"     → 40
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 ```bash
 npm test          # Run Mocha + Chai tests
@@ -104,7 +101,7 @@ npm run benchmark # Performance + attack suite
 
 ---
 
-## 📊 Evidence of Effectiveness
+##  Evidence of Effectiveness
 
 Automated Puppeteer tests capture proof of protection:
 
@@ -118,7 +115,7 @@ Automated Puppeteer tests capture proof of protection:
 
 ---
 
-## ⚙️ Configuration
+##  Configuration
 
 All options can be set via **JavaScript object** or **environment variables**.
 
@@ -169,7 +166,7 @@ securityMiddleware({
 
 ---
 
-## 🐳 Docker
+##  Docker
 
 ```bash
 # Using docker-compose
@@ -182,7 +179,7 @@ docker run -p 3000:3000 xss-csrf-middleware
 
 ---
 
-## 🔍 Manual Testing Guide
+##  Manual Testing Guide
 
 1. **Start the server**
    ```bash
@@ -216,7 +213,7 @@ docker run -p 3000:3000 xss-csrf-middleware
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 xss-csrf-middleware/
@@ -240,7 +237,7 @@ xss-csrf-middleware/
 
 ---
 
-## 📚 References
+##  References
 
 - [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
 - [OWASP CSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)
@@ -248,21 +245,5 @@ xss-csrf-middleware/
 
 ---
 
-## 📄 License
 
-**ISC License** — Copyright © Wyatt 2025
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! Feel free to open issues or submit pull requests.
-
-```bash
-# Development workflow
-git clone https://github.com/wyatt2247/xss-csrf-middleware.git
-cd xss-csrf-middleware
-npm install
-npm test
-```
 
