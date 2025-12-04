@@ -1,0 +1,16 @@
+[
+  {
+    "blockedURI": "http://localhost:3000/protected/transfer",
+    "violatedDirective": "connect-src",
+    "originalPolicy": "default-src 'none'; script-src 'self' 'nonce-b98e/XJR9/lIsNO634sMAQ==' https://cdn.jsdelivr.net; style-src 'self' 'nonce-b98e/XJR9/lIsNO634sMAQ==' https://cdn.jsdelivr.net; img-src 'self' data: https:; object-src 'none'",
+    "sourceFile": "http://localhost:3000/protected",
+    "statusCode": 200
+  },
+  {
+    "blockedURI": "inline",
+    "violatedDirective": "script-src-elem",
+    "originalPolicy": "default-src 'none'; script-src 'self' 'nonce-b98e/XJR9/lIsNO634sMAQ==' https://cdn.jsdelivr.net; style-src 'self' 'nonce-b98e/XJR9/lIsNO634sMAQ==' https://cdn.jsdelivr.net; img-src 'self' data: https:; object-src 'none'",
+    "sourceFile": "http://localhost:3000/protected",
+    "statusCode": 200
+  }
+]

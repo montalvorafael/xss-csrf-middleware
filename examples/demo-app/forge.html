@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CSRF Forge Test</title>
+  </head>
+  <body>
+    <h1>Cross-Site CSRF Attempt</h1>
+    <form action="http://localhost:3000/protected/transfer" method="POST">
+      <input type="hidden" name="amount" value="999" />
+      <button type="submit">Forge Transfer</button>
+    </form>
+    <p>
+      Open this from a different origin (e.g., <code>file://</code> or a different port).
+      <b>SameSite=Lax/Strict</b> and the CSRF middleware should block the request.
+    </p>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CSRF Forge Test</title>
+  </head>
+  <body>
+    <h1>Cross-Site CSRF Attempt</h1>
+    <form action="http://localhost:3000/protected/transfer" method="POST">
+      <input type="hidden" name="amount" value="999" />
+      <button type="submit">Forge Transfer</button>
+    </form>
+    <p>
+      Open this from a different origin (e.g., <code>file://</code> or a different port).
+      <b>SameSite=Lax/Strict</b> and the CSRF middleware should block the request.
+    </p>
+  </body>
+</html>
+

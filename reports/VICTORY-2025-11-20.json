@@ -1,0 +1,22 @@
+{
+  "XSS_protected": {
+    "blockRate": 0
+  },
+  "XSS_vulnerable": {
+    "blockRate": 100
+  },
+  "CSRF_protected": {
+    "successRate": 50
+  },
+  "CSRF_vulnerable": {
+    "successRate": 50
+  },
+  "perf_protected": {
+    "rps": "144.3",
+    "latency": "400.89 ms"
+  },
+  "perf_vulnerable": {
+    "rps": "2806.8",
+    "latency": "20.85 ms"
+  }
+}

